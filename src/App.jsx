@@ -1,24 +1,92 @@
-
 import React, { useEffect, useState } from "react";
 
-const products = [
+const fioProducts = [
   {
-    title: "DRAX PANEL V4",
-    price: "Rp 150.000",
-    video:
-      "https://cdn.coverr.co/videos/coverr-gaming-setup-1566026319658?download=1080p",
+    badge: "BEST",
+    title: "PAKET STANDAR",
+    sub: "[FIO BASIC]",
+    price: "50K",
+    tag: "STARTER",
+    desc: "Paket basic untuk gameplay smooth dan stabil.",
+    benefits: [
+      "Optimize sensi",
+      "Smooth aim",
+      "Sensitivity weapons",
+      "Sensi X/Y",
+    ],
   },
   {
-    title: "DRAX VIP TOOLS",
-    price: "Rp 250.000",
-    video:
-      "https://cdn.coverr.co/videos/coverr-neon-city-night-1564849130222?download=1080p",
+    badge: "POPULAR",
+    title: "PAKET MENENGAH",
+    sub: "[FIO HEADTCK]",
+    price: "100K",
+    tag: "MOST USED",
+    desc: "Aim lebih stabil dan recoil lebih presisi.",
+    benefits: [
+      "Optimize sensi V1",
+      "Smooth aim",
+      "Recoil precision",
+      "Sensitivity weapons",
+    ],
   },
   {
-    title: "ANDROID PREMIUM",
-    price: "Rp 100.000",
-    video:
-      "https://cdn.coverr.co/videos/coverr-cyberpunk-city-1564849127347?download=1080p",
+    badge: "PREMIUM",
+    title: "PAKET PREMIUM",
+    sub: "[FIO EXTRIME]",
+    price: "150K",
+    tag: "HIGH AIM",
+    desc: "Paket competitive gameplay premium.",
+    benefits: [
+      "Optimize sensi V2",
+      "Smooth aim V2",
+      "Recoil precision",
+      "Advanced Commands",
+    ],
+  },
+];
+
+const sxrProducts = [
+  {
+    badge: "HOT",
+    title: "SXR TOOLS",
+    sub: "HEADTRICK",
+    price: "50K",
+    tag: "TOOLS",
+    desc: "Tools optimasi performa dan sensitivitas.",
+    benefits: [
+      "FPS lebih stabil",
+      "Aim lebih presisi",
+      "Monitoring performance",
+      "Crosshair tambahan",
+    ],
+  },
+  {
+    badge: "NEW",
+    title: "XIT APP",
+    sub: "SHADOW",
+    price: "50K",
+    tag: "STABILIZER",
+    desc: "Aplikasi stabilisasi sensitivitas gameplay.",
+    benefits: [
+      "Spray stabil",
+      "Gameplay nyaman",
+      "Touch smooth",
+      "Anti goyang",
+    ],
+  },
+  {
+    badge: "PREMIUM",
+    title: "XIT APP",
+    sub: "SXR PANEL",
+    price: "100K",
+    tag: "FAST TOUCH",
+    desc: "Panel touch ultra fast dan minim delay.",
+    benefits: [
+      "Delay minim",
+      "Aim presisi",
+      "Touch cepat",
+      "Gaming panel",
+    ],
   },
 ];
 
@@ -26,40 +94,24 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2200);
 
-    const audio = document.getElementById("bg-music");
-
-    const playAudio = async () => {
-      try {
-        await audio?.play();
-      } catch (e) {}
-    };
-
-    playAudio();
-    document.addEventListener("click", playAudio);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("click", playAudio);
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
       <div className="h-screen bg-black flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,255,0.18),transparent_60%)]"></div>
+        <div className="absolute inset-0 bg-cyan-500/10 blur-3xl"></div>
 
-        <div className="relative z-10 text-center animate-pulse">
+        <div className="text-center animate-pulse z-10">
           <h1 className="text-6xl md:text-8xl font-black tracking-[10px] bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
             DRAX INJEKTOR
           </h1>
 
-          <div className="w-72 h-2 rounded-full bg-cyan-950 overflow-hidden mt-8">
-            <div className="h-full w-full bg-gradient-to-r from-cyan-400 to-fuchsia-500 animate-pulse"></div>
-          </div>
-
-          <p className="mt-6 text-cyan-300 tracking-[4px] text-sm">
+          <p className="mt-6 text-cyan-300 tracking-[5px]">
             INITIALIZING SYSTEM...
           </p>
         </div>
@@ -67,34 +119,54 @@ export default function App() {
     );
   }
 
-  return (
-    <div className="bg-[#02030a] text-white min-h-screen overflow-hidden">
-      <audio
-        id="bg-music"
-        src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=future-bass-fashion-10954.mp3"
-        autoPlay
-        loop
-        preload="auto"
-      />
+  const renderCard = (item, i) => (
+    <div
+      key={i}
+      className="relative overflow-hidden rounded-[35px] border border-cyan-400/20 bg-[#081120]/80 backdrop-blur-xl p-8 hover:scale-[1.03] transition duration-500 shadow-[0_0_40px_rgba(0,255,255,0.12)]"
+    >
+      <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-cyan-400 to-fuchsia-500"></div>
 
-      <header className="fixed top-0 left-0 w-full z-50 border-b border-cyan-400/20 bg-black/40 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-black tracking-[6px] bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
-              DRAX INJEKTOR
-            </h1>
-            <p className="text-xs text-cyan-400 tracking-[4px] mt-1">
-              PREMIUM CYBER STORE
-            </p>
-          </div>
-
-          <div className="px-4 py-2 rounded-xl bg-red-500 font-bold animate-pulse">
-            LIVE
-          </div>
+      <div className="relative z-10">
+        <div className="inline-block px-4 py-1 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-black text-xs font-black tracking-[3px]">
+          {item.badge}
         </div>
-      </header>
 
-      <section className="relative h-screen flex items-center justify-center">
+        <h2 className="mt-6 text-3xl font-black leading-tight">
+          {item.title}
+          <br />
+          <span className="text-cyan-300">{item.sub}</span>
+        </h2>
+
+        <p className="mt-4 text-cyan-100/70">
+          {item.desc}
+        </p>
+
+        <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-black/30 p-5">
+          <h3 className="text-5xl font-black text-fuchsia-400">
+            {item.price}
+          </h3>
+
+          <span className="text-cyan-300 tracking-[3px] text-sm">
+            {item.tag}
+          </span>
+        </div>
+
+        <ul className="mt-6 space-y-3 text-cyan-100/80">
+          {item.benefits.map((b, x) => (
+            <li key={x}>✦ {b}</li>
+          ))}
+        </ul>
+
+        <button className="mt-8 w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-black font-black tracking-[3px] hover:scale-[1.02] transition">
+          BUY NOW
+        </button>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="bg-[#020617] text-white min-h-screen overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center">
         <video
           autoPlay
           muted
@@ -103,121 +175,95 @@ export default function App() {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source
-            src="https://cdn.coverr.co/videos/coverr-gaming-setup-1566026319658?download=1080p"
+            src="https://cdn.coverr.co/videos/coverr-neon-city-night-1564849130222?download=1080p"
             type="video/mp4"
           />
         </video>
 
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-black/75"></div>
+
+        <div className="absolute top-0 left-0 w-full border-b border-cyan-400/10 bg-black/20 backdrop-blur-xl z-50">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <h1 className="text-3xl font-black tracking-[6px] bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
+              DRAX INJEKTOR
+            </h1>
+
+            <button className="px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-black font-black">
+              PREMIUM
+            </button>
+          </div>
+        </div>
 
         <div className="relative z-10 text-center px-6">
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="px-5 py-3 rounded-2xl border border-cyan-400/30 bg-black/40">
-              100% AMAN
-            </div>
-            <div className="px-5 py-3 rounded-2xl border border-cyan-400/30 bg-black/40">
-              NO BAN
-            </div>
-            <div className="px-5 py-3 rounded-2xl border border-cyan-400/30 bg-black/40">
-              24/7 SUPPORT
-            </div>
+          <div className="inline-block px-5 py-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 text-cyan-300 mb-6">
+            FUTURISTIC CYBER INTERFACE
           </div>
 
-          <h1 className="text-5xl md:text-8xl font-black tracking-[10px] mb-4">
+          <h1 className="text-5xl md:text-8xl font-black tracking-[10px]">
             DRAX INJEKTOR
           </h1>
 
-          <p className="text-cyan-100/80 text-lg md:text-2xl tracking-[3px]">
-            PRIVATE TOOLS • PREMIUM QUALITY
+          <p className="mt-6 max-w-2xl mx-auto text-cyan-100/70 text-lg md:text-2xl">
+            Premium tools, injector, panel, dan cyber utility dengan
+            tampilan modern elite futuristic UI.
           </p>
 
-          <button className="mt-10 px-10 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-black font-black tracking-[4px]">
-            ENTER SYSTEM
-          </button>
+          <div className="mt-10 flex flex-wrap justify-center gap-5">
+            <button className="px-10 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-black font-black tracking-[3px]">
+              OPEN STORE
+            </button>
+
+            <button className="px-10 py-4 rounded-2xl border border-cyan-400/20 bg-black/20">
+              VIEW PRODUCT
+            </button>
+          </div>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-black tracking-[6px] text-cyan-300 mb-10">
-          PRODUK UNGGULAN
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <h2 className="text-5xl font-black text-center mb-16 tracking-[6px] bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
+          FIO PACKAGE
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {products.map((item, index) => (
-            <div
-              key={index}
-              className="rounded-[30px] overflow-hidden border border-cyan-400/20 bg-[#07101d] hover:scale-[1.02] transition duration-500 shadow-[0_0_30px_rgba(0,255,255,0.08)]"
-            >
-              <video
-                src={item.video}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="h-64 w-full object-cover"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-black text-cyan-300">
-                  {item.title}
-                </h3>
-
-                <p className="mt-3 text-fuchsia-400 font-bold text-xl">
-                  {item.price}
-                </p>
-
-                <button className="mt-6 w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-black font-black tracking-[3px]">
-                  LIHAT DETAIL
-                </button>
-              </div>
-            </div>
-          ))}
+          {fioProducts.map(renderCard)}
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-black tracking-[6px] text-cyan-300 mb-10">
-          INFO PENTING
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <h2 className="text-5xl font-black text-center mb-16 tracking-[6px] bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
+          SXR TOOLS
         </h2>
 
-        <div className="rounded-[30px] border border-cyan-400/20 bg-[#07101d] overflow-hidden">
-          {[
-            "Pembayaran dikonfirmasi manual oleh admin",
-            "File bisa didownload otomatis setelah konfirmasi",
-            "Simpan bukti pembayaran sampai file diterima",
-            "Tidak ada refund setelah file terkirim",
-          ].map((txt, i) => (
-            <div
-              key={i}
-              className="p-6 border-b border-cyan-400/10 text-cyan-100/80"
-            >
-              ▸ {txt}
-            </div>
-          ))}
+        <div className="grid md:grid-cols-3 gap-8">
+          {sxrProducts.map(renderCard)}
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="rounded-[30px] border border-cyan-400/20 bg-[#07101d] p-10 text-center">
-          <h2 className="text-4xl font-black text-cyan-300 mb-6 tracking-[6px]">
-            PEMBAYARAN QRIS
+      <section className="max-w-6xl mx-auto px-6 py-24">
+        <div className="rounded-[35px] border border-cyan-400/20 bg-[#081120] p-10 text-center">
+          <h2 className="text-5xl font-black bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
+            QRIS PAYMENT
           </h2>
+
+          <p className="mt-5 text-cyan-100/60">
+            Scan QR untuk melakukan pembayaran premium package.
+          </p>
 
           <img
             src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=DRAX-INJEKTOR"
-            className="mx-auto rounded-2xl"
+            className="mx-auto mt-10 rounded-3xl border border-cyan-400/20"
           />
 
-          <button className="mt-8 px-10 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-black font-black">
-            SAYA SUDAH BAYAR
+          <button className="mt-10 px-10 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-black font-black tracking-[3px]">
+            CONFIRM PAYMENT
           </button>
         </div>
       </section>
 
-      <footer className="border-t border-cyan-400/10 py-10 text-center text-cyan-200/50 tracking-[4px]">
-        © 2026 DRAX INJEKTOR — ELITE CYBER INTERFACE
+      <footer className="border-t border-cyan-400/10 py-10 text-center text-cyan-100/40 tracking-[4px]">
+        © 2026 DRAX INJEKTOR — FUTURISTIC CYBER UI
       </footer>
     </div>
   );
 }
-
